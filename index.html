@@ -1,60 +1,164 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>pera.github.com by pera</title>
+<!DOCTYPE HTML>
+<!-- Dos Patitos 2013 -->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MTGox sounds</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script src="https://socketio.mtgox.com/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		var conn = io.connect('https://socketio.mtgox.com/mtgox');
+		$(function() {
+			  n=0;
+			  lastTicker=0;
+			  lastTrade=0;
+			  lastDepth=0;
+			  startTicker=false;
+			  startTrade=false;
+			  startDepth=false;
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>pera.github.com</h1>
-        <p></p>
+			  lastPrice = 0;
 
+			  sounds=[];
+			  sounds.push(new Audio("a1.ogg"));
+			  sounds.push(new Audio("a2.ogg"));
+			  sounds.push(new Audio("a3.ogg"));
+			  sounds.push(new Audio("a4.ogg"));
+			  sounds.push(new Audio("b1.ogg"));
+			  sounds.push(new Audio("b2.ogg"));
+			  sounds.push(new Audio("b3.ogg"));
+			  sounds.push(new Audio("b4.ogg"));
+			  sounds.push(new Audio("b5.ogg"));
+			  sounds.push(new Audio("g1.ogg"));
+			  sounds.push(new Audio("g2.ogg"));
+			  sounds.push(new Audio("g3.ogg"));
+			  sounds.push(new Audio("hf1.ogg"));
+			  sounds.push(new Audio("hf2.ogg"));
+			  sounds.push(new Audio("n1.ogg"));
+			  sounds.push(new Audio("n2.ogg"));
+			  sounds.push(new Audio("n3.ogg"));
+			  sounds.push(new Audio("n4.ogg"));
 
-        <p class="view"><a href="https://github.com/pera">View My GitHub Profile</a></p>
-
-      </header>
-      <section>
-        <h3>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+			  $("#status").html("connecting...");
+			  conn.on('connect', function(data) {
+				  sounds[4].play();
+				  $("#status").html("connected");
+			  });
+			  conn.on('disconnect', function(data) {
+				  sounds[0].play();
+				  $("#status").html("disconnected");
+			  });
+			  conn.on('error', function(data) {
+				  sounds[1].play();
+			  });
+			  conn.on('message', function(data) {
+				  // Handle incoming data object.
+				  if(n%10 === 0){
+					  setTimeout(function(){
+						  sounds[16].play();
+					  }, 1000);
+				  }
+				  changeContent("#cambios", ++n);
+				  switch(data.channel){
+					  case "d5f06780-30a8-4a48-a2f8-7ed181b4a13f":
+						  changeContent("#data1", JSON.stringify(data,null,4));
+						  if('ticker' in data){
+							  if(data.ticker.last.value < lastPrice){
+								  sounds[15].play();
+							  } else {
+								  sounds[5].play();
+							  }
+							  lastPrice = data.ticker.last.value;
+							  startTicker = true;
+							  $("#lastTime1").finish();
+							  $("#lastTime1").fadeTo(0,0.40);
+							  lastTicker = data.ticker.now*0.001;
+							  $("#lastTime1").fadeTo("fast",1.0);
+						  }
+						  break;
+					  case "dbf1dee9-4f2e-4a08-8cb7-748919a71b21":
+						  sounds[8].play();
+						  changeContent("#data2", JSON.stringify(data,null,4));
+						  if('trade' in data){
+							  startTrade = true;
+							  $("#lastTime2").finish();
+							  $("#lastTime2").fadeTo(0,0.40);
+							  lastTrade = data.trade.tid*0.001;
+							  $("#lastTime2").fadeTo("fast",1.0);
+						  }
+						  break;
+					  case "24e67e0d-1cad-4cc0-9e7a-f8523ef460fe":
+						  changeContent("#data3", JSON.stringify(data,null,4));
+						  if('depth' in data){
+							  if(data.depth.type_str === "ask"){
+								  sounds[2].play();
+							  } else {
+								  sounds[13].play();
+							  }
+							  startDepth = true;
+							  $("#lastTime3").finish();
+							  $("#lastTime3").fadeTo(0,0.40);
+							  lastDepth = data.depth.now*0.001;
+							  $("#lastTime3").fadeTo("fast",1.0);
+						  }
+						  break;
+				  }
+			  });
+			  function changeContent(e,content){
+				  $(e).finish();
+				  $(e).fadeTo(0,0.40);
+				  $(e).html(content);
+				  $(e).fadeTo("fast",1.0);
+			  }
+			  setInterval(function(){
+				  if(startTicker){
+					  $("#lastTime1").html( (((new Date()).getTime()-lastTicker)*0.001).toFixed(2) );
+				  }
+				  if(startTrade){
+					  $("#lastTime2").html( (((new Date()).getTime()-lastTrade)*0.001).toFixed(2) );
+				  }
+				  if(startDepth){
+					  $("#lastTime3").html( (((new Date()).getTime()-lastDepth)*0.001).toFixed(2) );
+				  }
+			  },10);
+		});
+	</script>
+	<style type="text/css">
+		@font-face {
+			font-family: "pf_arma_five";
+			src: url("pf_arma_five.ttf") format("truetype");
+		}
+		body {
+			margin: 0;
+			background-color: #222;
+			color: white;
+			font-family: "pf_arma_five";
+			font-size: 8px;
+		}
+		.data {
+			width: 33%;
+			float: left;
+		}
+		.data * {
+			margin-left: 10px;
+		}
+		#header {
+			background-image: url("strip.png");
+			padding: 0 3px 3px 3px;
+			margin-bottom: 10px;
+		}
+		#header a {
+			text-shadow: 1px 1px 1px #000, -1px 1px 1px #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<a style="float: right">status: <span id="status"></span></a>
+		<a>total messages: <span id="cambios"></span></a>
+	</div>
+	<div class="data"><div>last ticker (sec): <span id="lastTime1"></span></div><br/><pre id="data1"></pre></div>
+	<div class="data"><div>last trade (sec): <span id="lastTime2"></span></div><br/><pre id="data2"></pre></div>
+	<div class="data"><div>last depth (sec): <span id="lastTime3"></span></div><br/><pre id="data3"></pre></div>
+</body>
 </html>
