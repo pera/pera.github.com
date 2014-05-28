@@ -43,6 +43,8 @@
 			  conn.on('connect', function(data) {
 				  sounds[4].play();
 				  $("#status").html("connected");
+				  console.log('connected');
+				  conn.emit('message', {"op":"subscribe","channel":'d5f06780-30a8-4a48-a2f8-7ed181b4a13f'});
 			  });
 			  conn.on('disconnect', function(data) {
 				  sounds[0].play();
@@ -53,6 +55,7 @@
 			  });
 			  conn.on('message', function(data) {
 				  // Handle incoming data object.
+					console.log(data);
 				  if(n%10 === 0){
 					  setTimeout(function(){
 						  sounds[16].play();
