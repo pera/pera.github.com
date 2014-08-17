@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[pera's blog]]></title>
+  <link href="http://blog.peramid.es/atom.xml" rel="self"/>
+  <link href="http://blog.peramid.es/"/>
+  <updated>2014-08-17T19:41:36-04:00</updated>
+  <id>http://blog.peramid.es/</id>
+  <author>
+    <name><![CDATA[Brian Gomes Bascoy]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+</feed>
