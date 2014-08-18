@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[My Octopress Blog]]></title>
-  <link href="http://pera.github.io/atom.xml" rel="self"/>
-  <link href="http://pera.github.io/"/>
-  <updated>2014-08-17T21:44:24-04:00</updated>
-  <id>http://pera.github.io/</id>
+  <title><![CDATA[pera's blog]]></title>
+  <link href="https://blog.peramid.es/atom.xml" rel="self"/>
+  <link href="https://blog.peramid.es/"/>
+  <updated>2014-08-18T08:03:38-04:00</updated>
+  <id>https://blog.peramid.es/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Brian Gomes Bascoy]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>

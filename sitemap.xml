@@ -4,15 +4,15 @@
   
   
   <url>
-    <loc>http://pera.github.io/</loc>
-    <lastmod>2014-08-17T21:44:24-04:00</lastmod>
+    <loc>https://blog.peramid.es/</loc>
+    <lastmod>2014-08-18T08:03:38-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>http://pera.github.io/blog/archives/</loc>
-    <lastmod>2014-08-17T21:44:24-04:00</lastmod>
+    <loc>https://blog.peramid.es/blog/archives/</loc>
+    <lastmod>2014-08-18T08:03:38-04:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
