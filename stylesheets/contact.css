@@ -34,3 +34,13 @@ form button {
 p {
 	margin-bottom: 10px !important;
 }
+
+#sent {
+	display: none;
+}
+
+#sent:target {
+	display: inline;
+	color: #C20;
+	font-weight: bold;
+}
