@@ -1,0 +1,36 @@
+fieldset {
+	border: 0;
+	display: inline;
+	margin-top: 20px;
+}
+
+form input {
+	display: block;
+	margin-left: 80px;
+	margin-bottom: 20px;
+	width: 400px;
+	padding-left: 2px;
+}
+
+form textarea {
+	display: block;
+	margin-left: 80px;
+	margin-bottom: 20px;
+	width: 400px;
+	padding-left: 2px;
+}
+
+form label {
+	display: inline;
+	float: left;
+	font-size: 0.9em;
+	font-variant: small-caps;
+}
+
+form button {
+	float: right;
+}
+
+p {
+	margin-bottom: 10px !important;
+}

@@ -1,50 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[peramid.es]]></title>
-  <link href="https://blog.peramid.es/atom.xml" rel="self"/>
-  <link href="https://blog.peramid.es/"/>
-  <updated>2014-09-11T21:07:10-04:00</updated>
-  <id>https://blog.peramid.es/</id>
-  <author>
-    <name><![CDATA[Brian Gomes Bascoy]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Short introduction to SJCL  | peramid.es</title>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Short introduction to SJCL]]></title>
-    <link href="https://blog.peramid.es/blog/2014/09/09/short-introduction-to-sjcl/"/>
-    <updated>2014-09-09T20:01:50-04:00</updated>
-    <id>https://blog.peramid.es/blog/2014/09/09/short-introduction-to-sjcl</id>
-    <content type="html"><![CDATA[<p>The Stanford Javascript Crypto Library, or simply <a href="https://github.com/bitwiseshiftleft/sjcl/">SJCL</a>, is probably the best option available right now for using cryptography on the client-side: the project started in 2009 as a <a href="https://bitwiseshiftleft.github.io/sjcl/acsac.pdf">paper</a> describing how to implement a secure and fast crypto library for web browsers, including, for instance, a CSPRNG algorithm and symmetric encryption. Today, it also has public-key crypto, hashing, and ECC primitives. It&rsquo;s very small (just 37kb uncompressed w/ ECC), the code is pretty clean, and it&rsquo;s being maintained by various contributors on GitHub. One of the biggest problems right now is the auto-generated <a href="https://bitwiseshiftleft.github.io/sjcl/doc/">documentation</a>, which isn&rsquo;t super helpful, but that&rsquo;s not a big deal since you can always read the sources.</p>
+	<meta name="author" content="Brian Gomes Bascoy"> 
+	
+	<meta name="description" content="The Stanford Javascript Crypto Library, or simply SJCL, is probably the best option available right now for using cryptography on the client-side: &hellip;"> <meta name="keywords" content="">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="peramid.es" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css">
+	
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	
+</head>
+
+
+
+<body>
+	<header id="header" class="inner"><h1>peramid.es</h1>
+<nav id="main-nav"><ul>
+	<li><a href="/">Blog</a></li>
+	<li><a href="/archives">Archive</a></li>
+	<li><a href="/contact">Contact</a></li>
+</ul>
+</nav>
+
+
+</header>
+
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">Short Introduction to SJCL</h2>
+	<div class="entry-content"><p>The Stanford Javascript Crypto Library, or simply <a href="https://github.com/bitwiseshiftleft/sjcl/">SJCL</a>, is probably the best option available right now for using cryptography on the client-side: the project started in 2009 as a <a href="https://bitwiseshiftleft.github.io/sjcl/acsac.pdf">paper</a> describing how to implement a secure and fast crypto library for web browsers, including, for instance, a CSPRNG algorithm and symmetric encryption. Today, it also has public-key crypto, hashing, and ECC primitives. It&rsquo;s very small (just 37kb uncompressed w/ ECC), the code is pretty clean, and it&rsquo;s being maintained by various contributors on GitHub. One of the biggest problems right now is the auto-generated <a href="https://bitwiseshiftleft.github.io/sjcl/doc/">documentation</a>, which isn&rsquo;t super helpful, but that&rsquo;s not a big deal since you can always read the sources.</p>
 
 <p>Let&rsquo;s start with a very simple example using the convenience functions to easily encrypt and decrypt data (using AES):</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">msg</span> <span class="o">=</span> <span class="nx">sjcl</span><span class="p">.</span><span class="nx">encrypt</span><span class="p">(</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span> <span class="s2">&quot;Hi Alice!&quot;</span><span class="p">);</span>
 </span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">sjcl</span><span class="p">.</span><span class="nx">decrypt</span><span class="p">(</span><span class="s2">&quot;secret&quot;</span><span class="p">,</span> <span class="nx">msg</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
 <p>That was pretty simple. Let&rsquo;s try something different, like hashing a string using SHA-256:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 </pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="kd">var</span> <span class="nx">hash</span> <span class="o">=</span> <span class="nx">sjcl</span><span class="p">.</span><span class="nx">hash</span><span class="p">.</span><span class="nx">sha256</span><span class="p">.</span><span class="nx">hash</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">);</span>
 </span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;hash: &quot;</span><span class="o">+</span><span class="nx">sjcl</span><span class="p">.</span><span class="nx">codec</span><span class="p">.</span><span class="nx">hex</span><span class="p">.</span><span class="nx">fromBits</span><span class="p">(</span><span class="nx">hash</span><span class="p">));</span>
 </span><span class='line'><span class="c1">// It should print: &quot;hash: b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde9&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
 <p>SJCL has many ADTs. In this case <code>myhash</code> is an array of 8 numbers (in js this is 64 bits floats) but it&rsquo;s actually holding binary data (using just 32 bits for each number), so SJCL provides functions to convert, for example, from a binary array to a string in hexadecimal format.</p>
 
 <p>For the next example, I would like to use some elliptic curve cryptography, but to do that we need to build SJCL first to enable this option:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -52,12 +70,12 @@
 </span><span class='line'><span class="go">$ cd sjcl</span>
 </span><span class='line'><span class="go">$ ./configure --with-ecc</span>
 </span><span class='line'><span class="go">$ make</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
 <p>Now with our custom <code>sjcl.js</code> we can use the ECC primitives like DSA. So let&rsquo;s sign the previous hash:</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -85,12 +103,12 @@
 </span><span class='line'><span class="c1">// Print the signature and verify it</span>
 </span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;sign: &quot;</span><span class="o">+</span><span class="nx">sjcl</span><span class="p">.</span><span class="nx">codec</span><span class="p">.</span><span class="nx">base64</span><span class="p">.</span><span class="nx">fromBits</span><span class="p">(</span><span class="nx">signature</span><span class="p">));</span>
 </span><span class='line'><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">&quot;verified: &quot;</span><span class="o">+</span><span class="nx">newpubkey</span><span class="p">.</span><span class="nx">verify</span><span class="p">(</span><span class="nx">hash</span><span class="p">,</span> <span class="nx">signature</span><span class="p">));</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
 <p>Obviously we didn&rsquo;t need to create a new public key object to verify the signature, but I wanted to show how to obtain the public point. Finally, here is how we can serialize the public key (a point in the curve) and the private key (the exponent):</p>
 
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<div class='bogus-wrapper'><notextile><figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -108,35 +126,46 @@
 </span><span class='line'><span class="c1">// Unserialize and create a private key object (we have to create a bignum object)</span>
 </span><span class='line'><span class="kd">var</span> <span class="nx">secret_key_bn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sjcl</span><span class="p">.</span><span class="nx">bn</span><span class="p">(</span><span class="nx">seckey_hex</span><span class="p">);</span>
 </span><span class='line'><span class="kd">var</span> <span class="nx">secret_key</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sjcl</span><span class="p">.</span><span class="nx">ecc</span><span class="p">.</span><span class="nx">ecdsa</span><span class="p">.</span><span class="nx">secretKey</span><span class="p">(</span><span class="nx">curve</span><span class="p">,</span> <span class="nx">secret_key_bn</span><span class="p">);</span>
-</span></code></pre></td></tr></table></div></figure>
+</span></code></pre></td></tr></table></div></figure></notextile></div>
 
 
 <p>There is a branch that already includes functions for serialization, so this method will be deprecated in the future.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Congratulations adventurer]]></title>
-    <link href="https://blog.peramid.es/blog/2014/09/07/congratulations-adventurer/"/>
-    <updated>2014-09-07T16:46:15-04:00</updated>
-    <id>https://blog.peramid.es/blog/2014/09/07/congratulations-adventurer</id>
-    <content type="html"><![CDATA[<p>Your quest is at an end for you have reached the home of Peramides<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>.</p>
-
-<p>This is a personal blog about things I&rsquo;ve learnt, discovered, thought, or that I just need to write down somewhere because I always forget them. It&rsquo;s a spiritual successor of my old WordPress blog. I needed something fresh so I built this using Jekyll/Octopress (I almost chose <a href="http://hackage.haskell.org/package/hakyll">Hakyll</a> but its documentation was scarce and outdated, and I&rsquo;m not really proficient in Haskell yet) and I&rsquo;m hosting it with GitHub Pages. By the way, the current theme is a fork of CleanPress I made called <a href="https://github.com/pera/cleanerpress">CleanerPress</a>; actually I wanted a <a href="http://contemporary-home-computing.org/prof-dr-style/">Professor Doctor Style</a>, but probably most visitors would have considered that something awful.</p>
-
-<p>Having said that&hellip; My posts are not peer-reviewed and could be pretty opinionated at times. Also, English is not my first language, so expect syntactic, grammatical, and spelling errors.
-Finally, there is no comments section (and there will never be). Complaints? Please use the <a href="https://blog.peramid.es/contact">contact form</a> or write me an e-mail to bri at this domain.</p>
-
-<p>So, I think that&rsquo;s all. Welcome and enjoy your stay!</p>
-<div class="footnotes">
-<hr/>
-<ol>
-<li id="fn:1">
-<p><em>Peramides</em> is a partial anagram of <a href="https://en.wikipedia.org/wiki/Parmenides">Parmenides</a>, which includes the lexeme <em>pera</em> (i.e. pear in Spanish).<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
-</ol>
 </div>
 
-]]></content>
-  </entry>
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
   
-</feed>
+
+
+
+<time datetime="2014-09-09T20:01:50-04:00" pubdate data-updated="true">Sep 9th, 2014</time></div>
+	
+
+<div class="tags">
+
+	<a class='category' href='/blog/categories/cryptography/'>cryptography</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>
+
+</div>
+
+
+</div>
+</article>
+</div>
+	<footer id="footer" class="inner">Copyright &copy; 2014
+ Brian Gomes Bascoy 
+<br>
+Powered by Octopress.
+</footer>
+	
+
+</body>
+</html>
