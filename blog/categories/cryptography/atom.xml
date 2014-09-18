@@ -4,7 +4,7 @@
   <title><![CDATA[Category: cryptography | peramid.es]]></title>
   <link href="https://blog.peramid.es/blog/categories/cryptography/atom.xml" rel="self"/>
   <link href="https://blog.peramid.es/"/>
-  <updated>2014-09-18T15:15:51-04:00</updated>
+  <updated>2014-09-18T15:23:06-04:00</updated>
   <id>https://blog.peramid.es/</id>
   <author>
     <name><![CDATA[Brian Gomes Bascoy]]></name>
@@ -47,7 +47,7 @@ $ make
 
 <pre><code class="javascript">// Generate a key pair and use it to sign the SHA-256 hash
 var curve = sjcl.ecc.curves.k256;
-var keys = sjcl.ecc.ecdsa.generateKeys(curve,6);
+var keys = sjcl.ecc.ecdsa.generateKeys(curve,6); // 6 is actually the default paranoia, so you can omit that
 var signature = keys.sec.sign(hash);
 
 // Extract the coordinates of the public point and create a public key object for testing
